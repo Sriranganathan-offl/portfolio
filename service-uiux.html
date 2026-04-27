@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <style>
+        :root {
+            --header-height: 3.5rem;
+            --first-color: hsl(207, 65%, 65%);
+            --title-color: hsl(207, 4%, 95%);
+            --text-color: hsl(207, 4%, 65%);
+            --body-color: hsl(207, 4%, 6%);
+            --container-color: hsl(207, 4%, 10%);
+        }
+
+        body {
+            background-color: var(--body-color);
+            color: var(--text-color);
+        }
+
+        .service-detail {
+            padding-top: 8rem;
+            padding-bottom: 6rem;
+        }
+
+        .service-detail__container {
+            row-gap: 5rem;
+        }
+
+        .service-detail__header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .service-detail__icon-box {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, rgba(100,200,255,.15), rgba(100,200,255,.05));
+            border: 2px solid var(--first-color);
+            border-radius: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            box-shadow: 0 10px 30px rgba(100,200,255,.2);
+        }
+
+        .service-detail__icon {
+            font-size: 3.5rem;
+            color: var(--first-color);
+        }
+
+        .service-detail__title {
+            font-size: 3rem;
+            color: var(--title-color);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .service-detail__subtitle {
+            font-size: 1.25rem;
+            color: var(--first-color);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .service-detail__content {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .service-detail__info {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 3rem;
+            border-radius: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .service-detail__section-title {
+            font-size: 2rem;
+            color: var(--title-color);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .service-detail__section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: var(--first-color);
+            border-radius: 2px;
+        }
+
+        .service-detail__description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+
+        .service-detail__grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .service-detail__card {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: .4s;
+        }
+
+        .service-detail__card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+            border-color: var(--first-color);
+        }
+
+        .service-detail__card i {
+            font-size: 2rem;
+            color: var(--first-color);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-detail__card h3 {
+            color: var(--title-color);
+            margin-bottom: .5rem;
+        }
+
+        .service-detail__card p {
+            font-size: var(--small-font-size);
+        }
+
+        .service-detail__image-container {
+            position: relative;
+        }
+
+        .service-detail__img {
+            width: 100%;
+            border-radius: 2rem;
+            box-shadow: 0 30px 60px rgba(0,0,0,.5);
+        }
+
+        .service-detail__img-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, var(--body-color), transparent);
+            border-radius: 2rem;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 2.5rem;
+            left: 2.5rem;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            color: var(--title-color);
+            padding: .8rem 1.5rem;
+            border-radius: 3rem;
+            display: flex;
+            align-items: center;
+            column-gap: .75rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: .4s;
+        }
+
+        .back-btn:hover {
+            background: var(--first-color);
+            color: #fff;
+            transform: translateX(-5px);
+        }
+
+        @media screen and (max-width: 1024px) {
+            .service-detail__content {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+            .service-detail__image-container {
+                order: -1;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .service-detail__grid {
+                grid-template-columns: 1fr;
+            }
+            .service-detail__title {
+                font-size: 2.25rem;
+            }
+            .back-btn {
+                top: 1.5rem;
+                left: 1.5rem;
+                padding: .6rem 1.2rem;
+                font-size: var(--small-font-size);
+            }
+        }
+    </style>
+
+    <title>UI/UX Design - Premium Service Detail</title>
+</head>
+<body>
+    <!--=============== BACK BUTTON ===============-->
+    <a href="index.html#services" class="back-btn">
+        <i class="ri-arrow-left-line"></i> Back to Home
+    </a>
+
+    <!--=============== SERVICE DETAIL ===============-->
+    <main class="main">
+        <section class="service-detail section bd-container">
+            <div class="service-detail__header">
+                <div class="service-detail__icon-box">
+                    <i class="ri-layout-4-line service-detail__icon"></i>
+                </div>
+                <h1 class="service-detail__title">UI/UX Design</h1>
+                <p class="service-detail__subtitle">Premium User Experiences</p>
+            </div>
+
+            <div class="service-detail__container bd-grid">
+                <div class="service-detail__content">
+                    <div class="service-detail__info">
+                        <h2 class="service-detail__section-title">Elevating Digital Products</h2>
+                        <p class="service-detail__description">
+                            In a digital-first world, your product's success depends on the experience it provides. I craft intuitive, visually compelling, and accessible designs that don't just look great but drive engagement and loyalty. Every pixel is placed with purpose, ensuring a seamless journey for your users.
+                        </p>
+
+                        <div class="service-detail__grid">
+                            <div class="service-detail__card">
+                                <i class="ri-search-eye-line"></i>
+                                <h3>User Research</h3>
+                                <p>Deep dive into user behavior and psychology to build data-driven foundations.</p>
+                            </div>
+
+                            <div class="service-detail__card">
+                                <i class="ri-command-line"></i>
+                                <h3>Wireframing</h3>
+                                <p>Blueprint creation focused on architecture and information flow.</p>
+                            </div>
+
+                            <div class="service-detail__card">
+                                <i class="ri-palette-line"></i>
+                                <h3>Visual Design</h3>
+                                <p>Crafting high-fidelity interfaces with modern aesthetics and brand alignment.</p>
+                            </div>
+
+                            <div class="service-detail__card">
+                                <i class="ri-smartphone-line"></i>
+                                <h3>Responsive UX</h3>
+                                <p>Ensuring a consistent and fluid experience across all devices and platforms.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-detail__image-container">
+                        <img src="assets/img/uiux-detail.png" alt="UI UX Design" class="service-detail__img">
+                        <div class="service-detail__img-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--=============== FOOTER ===============-->
+    <footer class="footer section">
+        <div class="footer__container container grid">
+            <div>
+                <h1 class="footer__title">Sri Ranganathan</h1>
+                <h2 class="footer__education">Full Stack Developer</h2>
+            </div>
+
+            <div class="footer__social">
+                <a href="#" target="_blank" class="footer__social-link">
+                    <i class="ri-facebook-circle-line"></i>
+                </a>
+                <a href="#" target="_blank" class="footer__social-link">
+                    <i class="ri-instagram-line"></i>
+                </a>
+                <a href="#" target="_blank" class="footer__social-link">
+                    <i class="ri-twitter-line"></i>
+                </a>
+            </div>
+
+            <span class="footer__copy">
+                &#169; Sri Ranganathan. All rights reserved
+            </span>
+        </div>
+    </footer>
+
+    <!--=============== SCROLLREVEAL ===============-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <script>
+        const sr = ScrollReveal({
+            origin: 'top',
+            distance: '60px',
+            duration: 2500,
+            delay: 400,
+        })
+
+        sr.reveal('.service-detail__header')
+        sr.reveal('.service-detail__info', {origin: 'left', delay: 600})
+        sr.reveal('.service-detail__image-container', {origin: 'right', delay: 800})
+        sr.reveal('.service-detail__card', {interval: 100, delay: 1000})
+    </script>
+</body>
+</html>

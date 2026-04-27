@@ -61,16 +61,16 @@ let swiperTestimonial = new Swiper(".testimonial__container", {
 
 /*=============== EMAIL JS ===============*/
 const contactForm = document.getElementById('contact-form'),
-      contactName = document.getElementById('contact-name'),
-      contactEmail = document.getElementById('contact-email'),
-      contactProject = document.getElementById('contact-project'),
+      contactName = document.getElementById('name'),
+      contactEmail = document.getElementById('email'),
+      contactSubject = document.getElementById('subject'),
       contactMessage = document.getElementById('contact-message')
       
 const sendEmail = (e) =>{
   e.preventDefault()
 
   // Check if the field has a value
-  if(contactName.value === '' || contactEmail.value === '' || contactProject.value === ''){
+  if(contactName.value === '' || contactEmail.value === '' || contactSubject.value === ''){
     // Add and remove color
     contactMessage.classList.remove('color-blue')
     contactMessage.classList.add('color-red')
@@ -97,7 +97,7 @@ const sendEmail = (e) =>{
     // To clear the input field
     contactName.value = ''
     contactEmail.value = ''
-    contactProject.value = ''
+    contactSubject.value = ''
   }
 }
 contactForm.addEventListener('submit', sendEmail)
@@ -182,6 +182,8 @@ const sr = ScrollReveal({
 
 sr.reveal(`.home__data, .projects__container, .testimonial__container, .footer__container`)
 sr.reveal(`.home__info div`, {delay: 600, origin: 'bottom', interval: 100})
-sr.reveal(`.skills__content:nth-child(1), .contact__content:nth-child(1)`, {origin: 'left'})
-sr.reveal(`.skills__content:nth-child(2), .contact__content:nth-child(2)`, {origin: 'right'})
+sr.reveal(`.skills__content:nth-child(1), .contact__data`, {origin: 'left'})
+sr.reveal(`.skills__content:nth-child(2), .contact__form`, {origin: 'right'})
 sr.reveal(`.qualification__content, .services__card`, {interval: 100})
+sr.reveal(`.contact__box`, {interval: 100, origin: 'bottom'})
+sr.reveal(`.contact__social`, {origin: 'bottom', delay: 800})

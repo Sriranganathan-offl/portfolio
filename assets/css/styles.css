@@ -1030,6 +1030,7 @@ body.dark-theme {
 
 .contact__input:focus {
   border: 3px solid var(--white-color);
+  box-shadow: 0 0 15px hsla(207, 65%, 65%, .3);
 }
 
 .contact__input:-webkit-autofill {
@@ -1061,9 +1062,30 @@ body.dark-theme {
 
 .contact__button {
   background-color: var(--first-color);
+  color: var(--black-color);
+  font-weight: var(--font-semi-bold);
   cursor: pointer;
   margin-top: 20px;
-  /* height: 30px; */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: .5rem;
+  transition: transform .3s, box-shadow .3s, background-color .3s;
+}
+
+.contact__button i {
+  font-size: 1.25rem;
+  transition: transform .3s;
+}
+
+.contact__button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 24px hsla(207, 65%, 65%, .4);
+  background-color: var(--white-color);
+}
+
+.contact__button:hover i {
+  transform: translateX(5px) rotate(-20deg);
 }
 
 /* Opaque placeholder */
@@ -1088,7 +1110,11 @@ body.dark-theme {
 
 .contact__social-arrow {
   width: 32px;
+  height: 32px;
+  font-size: 2rem;
+  color: var(--first-color);
   margin: 0 auto;
+  display: block;
 }
 
 .contact__social-data {
@@ -1127,6 +1153,24 @@ body.dark-theme {
 
 .contact__social-link:hover {
   background-color: var(--first-color);
+  transform: translateY(-5px) rotate(10deg);
+}
+
+/* Floating Animation */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.geometric-box {
+  width: 50px;
+  height: 50px;
+  background-color: var(--first-color);
+  position: absolute;
+  z-index: -1;
+  opacity: .2;
+  animation: float 4s ease-in-out infinite;
 }
 
 .contact__message {

@@ -364,6 +364,7 @@ body.dark-theme {
   margin-bottom: .5rem;
   background: linear-gradient(90deg, #fff 0%, var(--first-color) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 800;
 }
